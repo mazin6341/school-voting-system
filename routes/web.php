@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\VoteController;
 
 /*
@@ -21,6 +22,10 @@ Route::get('/', function () {
 Route::get('/contvote', function () {
     return view('contvote');
 })->name('contvote.show');
+
+//Post Related
+Route::post('createpost',[PostController::class,'createPost']);
+Route::get('/posts', [PostController::class, 'viewPosts'])->name('posts.view');
 
 Route::get('/schoolcaptain',[VoteController::class,'schoolCaptainResult']);
 Route::get('/depschoolcaptain',[VoteController::class,'depSchoolCaptainResult']);
